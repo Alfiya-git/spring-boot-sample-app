@@ -1,0 +1,16 @@
+version: 0.0
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: "arn:aws:ecs:us-east-2:939238552155:task-definition/Java-Sample-App:4"
+        LoadBalancerInfo:
+          ContainerName: "SpringBootAppContainer"
+          ContainerPort: 8777
+
+Hooks:
+- BeforeInstall: "BeforeInstallHookFunctionName"
+- AfterInstall: "AfterInstallHookFunctionName"
+- AfterAllowTestTraffic: "AfterAllowTestTrafficHookFunctionName"
+- BeforeAllowTraffic: "BeforeAllowTrafficHookFunctionName"
+- AfterAllowTraffic: "AfterAllowTrafficHookFunctionName"
